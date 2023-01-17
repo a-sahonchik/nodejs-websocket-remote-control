@@ -1,9 +1,4 @@
-import {
-    Button,
-    mouse,
-    Point,
-    straightTo,
-} from '@nut-tree/nut-js';
+import { Button, mouse, Point, straightTo } from '@nut-tree/nut-js';
 import { WebSocket } from 'ws';
 import { CommandHandler } from '../types/CommandHandler';
 import { easingFunction } from '../utils/easingFunction';

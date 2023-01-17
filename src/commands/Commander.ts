@@ -6,6 +6,7 @@ import { moveMouseRight } from './moveMouseRight';
 import { mousePosition } from './mousePosition';
 import { drawCircle } from './drawCircle';
 import { drawRectangle } from './drawRectangle';
+import { drawSquare } from './drawSquare';
 
 class Commander {
     private readonly commands: Command[];
@@ -68,6 +69,11 @@ const commander = new Commander([
         name: 'draw_rectangle',
         args: [],
         handler: drawRectangle,
+    },
+    {
+        name: 'draw_square',
+        args: [],
+        handler: drawSquare,
     },
 ]);
 
