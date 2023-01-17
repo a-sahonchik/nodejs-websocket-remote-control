@@ -4,6 +4,7 @@ import { moveMouseDown } from './moveMouseDown';
 import { moveMouseLeft } from './moveMouseLeft';
 import { moveMouseRight } from './moveMouseRight';
 import { mousePosition } from './mousePosition';
+import { drawCircle } from './drawCircle';
 
 class Commander {
     private readonly commands: Command[];
@@ -56,6 +57,11 @@ const commander = new Commander([
         name: 'mouse_position',
         args: [],
         handler: mousePosition,
+    },
+    {
+        name: 'draw_circle',
+        args: [],
+        handler: drawCircle,
     },
 ]);
 
