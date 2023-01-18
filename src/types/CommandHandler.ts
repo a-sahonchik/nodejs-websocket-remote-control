@@ -1,5 +1,5 @@
-import { WebSocket } from 'ws';
+import { Duplex } from 'stream';
 
-type CommandHandler = (name: string, args: string[], webSocket: WebSocket) => void;
+type CommandHandler = (name: string, args: string[], webSocket: Duplex) => void;
 
 export { CommandHandler };

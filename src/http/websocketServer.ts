@@ -1,16 +1,27 @@
-import { WebSocket, WebSocketServer } from 'ws';
+import { createWebSocketStream, WebSocket, WebSocketServer } from 'ws';
 import { getCommandFromInput } from '../utils/commandParser';
 
 const listenWebSocketServer = (port: number) => {
     const server = new WebSocketServer({ port });
 
     server.on('connection', async (webSocket: WebSocket) => {
-        webSocket.on('message', async (data: Buffer) => {
-            const commandInput = data.toString();
+        const webSocketStream = createWebSocketStream(webSocket, {
+            decodeStrings: false,
+            encoding: 'utf8',
+        });
 
-            const command = await getCommandFromInput(commandInput);
+        webSocketStream.on('data', async (data: string) => {
+            try {
+                // eslint-disable-next-line no-console
+                console.log(`received command: ${data}`);
 
-            await command.handler(command.name, command.args, webSocket);
+                const command = await getCommandFromInput(data);
+
+                await command.handler(command.name, command.args, webSocketStream);
+            } catch (error: any) {
+                // eslint-disable-next-line no-console
+                console.log(`ERROR: ${error.message}`);
+            }
         });
     });
 };

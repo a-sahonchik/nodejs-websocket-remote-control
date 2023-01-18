@@ -16,10 +16,6 @@ class Commander {
         this.commands = commands;
     }
 
-    public getCommands(): Command[] {
-        return this.commands;
-    }
-
     public getCommand(commandName: string): Command | undefined {
         const command = this.commands.find((c) => c.name === commandName);
 
