@@ -7,6 +7,7 @@ import { mousePosition } from './mousePosition';
 import { drawCircle } from './drawCircle';
 import { drawRectangle } from './drawRectangle';
 import { drawSquare } from './drawSquare';
+import { printScreen } from './printScreen';
 
 class Commander {
     private readonly commands: Command[];
@@ -74,6 +75,11 @@ const commander = new Commander([
         name: 'draw_square',
         args: [],
         handler: drawSquare,
+    },
+    {
+        name: 'prnt_scrn',
+        args: [],
+        handler: printScreen,
     },
 ]);
 

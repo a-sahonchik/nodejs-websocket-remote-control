@@ -1,4 +1,5 @@
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -8,20 +9,23 @@ const config = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'build'),
     },
+    externals: [
+        nodeExternals(),
+    ],
     module: {
         rules: [
             {
                 test: /\.(ts|tsx)$/i,
                 loader: 'ts-loader',
+                include: [path.resolve(__dirname, 'src')],
                 exclude: [
-                    '/node_modules/',
                     '/build/',
                 ],
             },
         ],
     },
     resolve: {
-        extensions: ['.ts'],
+        extensions: ['.ts', '.js'],
     },
     target: 'node',
 };
