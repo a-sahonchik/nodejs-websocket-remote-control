@@ -1,4 +1,4 @@
-const commands = {
+const commandNames = {
     mouseUp: 'mouse_up',
     mouseDown: 'mouse_down',
     mouseLeft: 'mouse_left',
@@ -8,6 +8,6 @@ const commands = {
     drawRectangle: 'draw_rectangle',
     drawSquare: 'draw_square',
     printScreen: 'prnt_scrn',
-}
+};
 
-export { commands };
+export { commandNames };

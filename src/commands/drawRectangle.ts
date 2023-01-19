@@ -7,7 +7,7 @@ const drawRectangle: CommandHandler = async (_name: string, args: string[]): Pro
 
     let isSquare = false;
 
-    if (isNaN(height)) {
+    if (Number.isNaN(height)) {
         isSquare = true;
         height = width;
     }

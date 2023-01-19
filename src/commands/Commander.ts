@@ -3,7 +3,7 @@ import { mousePosition } from './mousePosition';
 import { drawCircle } from './drawCircle';
 import { drawRectangle } from './drawRectangle';
 import { printScreen } from './printScreen';
-import { commands } from '../utils/commands';
+import { commandNames } from '../utils/commandNames';
 import { moveMouse } from './moveMouse';
 import { CommandNotFoundError } from '../errors/CommandNotFoundError';
 
@@ -33,47 +33,47 @@ class Commander {
 
 const commander = new Commander([
     {
-        name: commands.mouseUp,
+        name: commandNames.mouseUp,
         args: [],
         handler: moveMouse,
     },
     {
-        name: commands.mouseDown,
+        name: commandNames.mouseDown,
         args: [],
         handler: moveMouse,
     },
     {
-        name: commands.mouseLeft,
+        name: commandNames.mouseLeft,
         args: [],
         handler: moveMouse,
     },
     {
-        name: commands.mouseRight,
+        name: commandNames.mouseRight,
         args: [],
         handler: moveMouse,
     },
     {
-        name: commands.mousePosition,
+        name: commandNames.mousePosition,
         args: [],
         handler: mousePosition,
     },
     {
-        name: commands.drawCircle,
+        name: commandNames.drawCircle,
         args: [],
         handler: drawCircle,
     },
     {
-        name: commands.drawRectangle,
+        name: commandNames.drawRectangle,
         args: [],
         handler: drawRectangle,
     },
     {
-        name: commands.drawSquare,
+        name: commandNames.drawSquare,
         args: [],
         handler: drawRectangle,
     },
     {
-        name: commands.printScreen,
+        name: commandNames.printScreen,
         args: [],
         handler: printScreen,
     },

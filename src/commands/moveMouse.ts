@@ -1,6 +1,6 @@
 import { down, left, mouse, right, up } from '@nut-tree/nut-js';
 import { CommandHandler } from '../types/CommandHandler';
-import { commands } from '../utils/commands';
+import { commands } from '../utils/commandNames';
 import { easingFunction } from '../utils/easingFunction';
 import { NoHandlerError } from '../errors/NoHandlerError';
 
@@ -17,7 +17,7 @@ const moveMouse: CommandHandler = async (name: string, args: string[]): Promise<
     const direction = moveDirectionByCommandName[name];
 
     if (direction === undefined) {
-        throw new NoHandlerError(name)
+        throw new NoHandlerError(name);
     }
 
     await mouse.move(direction(distanceInPx), easingFunction);
