@@ -6,7 +6,7 @@ import { CommandHandler } from '../types/CommandHandler';
 const SCREENSHOT_WIDTH = 200;
 const SCREENSHOT_HEIGHT = 200;
 
-const printScreen: CommandHandler = async (name: string, _args: string[], webSocket: Duplex): Promise<void> => {
+const printScreen: CommandHandler = async (name: string, _args: string[], webSocket: Duplex): Promise<string> => {
     const { x: currentX, y: currentY } = await mouse.getPosition();
 
     const invertedImage = await screen.grabRegion(
@@ -27,8 +27,11 @@ const printScreen: CommandHandler = async (name: string, _args: string[], webSoc
     });
 
     const buffer = await jimpImage.getBufferAsync(Jimp.MIME_PNG);
+    const base64buffer = buffer.toString('base64');
 
-    webSocket.write(`${name} ${buffer.toString('base64')}`);
+    webSocket.write(`${name} ${base64buffer}`);
+
+    return `Screenshot captured, base64 buffer is ${base64buffer}`;
 };
 
 export { printScreen };

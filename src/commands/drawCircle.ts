@@ -4,7 +4,7 @@ import { easingFunction } from '../utils/easingFunction';
 
 const NUMBER_OF_CIRCLE_POINTS = 45;
 
-const drawCircle: CommandHandler = async (_name: string, args: string[]): Promise<void> => {
+const drawCircle: CommandHandler = async (_name: string, args: string[]): Promise<string> => {
     const radius = parseInt(args[0]!, 10);
 
     const currentPointerPosition = await mouse.getPosition();
@@ -21,6 +21,8 @@ const drawCircle: CommandHandler = async (_name: string, args: string[]): Promis
     }
 
     await mouse.releaseButton(Button.LEFT);
+
+    return `Drawn circle with radius ${radius}`;
 };
 
 export { drawCircle };

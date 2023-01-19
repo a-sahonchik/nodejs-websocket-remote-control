@@ -10,10 +10,6 @@ const getCommandFromInput = async (commandInput: string): Promise<Command> => {
 
     const command = commander.getCommand(commandName);
 
-    if (command === undefined) {
-        throw new Error(`Command ${commandName} does not exist.`);
-    }
-
     commander.setCommandArgs(commandName, args);
 
     return command;

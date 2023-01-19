@@ -17,7 +17,10 @@ const listenWebSocketServer = (port: number) => {
 
                 const command = await getCommandFromInput(data);
 
-                await command.handler(command.name, command.args, webSocketStream);
+                const result = await command.handler(command.name, command.args, webSocketStream);
+
+                // eslint-disable-next-line no-console
+                console.log(`command result: ${result}`);
             } catch (error: any) {
                 // eslint-disable-next-line no-console
                 console.log(`ERROR: ${error.message}`);

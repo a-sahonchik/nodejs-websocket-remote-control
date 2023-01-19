@@ -1,6 +1,6 @@
 import { CommandHandler } from './CommandHandler';
 
-interface Command {
+type Command = {
     name: string;
     args: string[];
     handler: CommandHandler;

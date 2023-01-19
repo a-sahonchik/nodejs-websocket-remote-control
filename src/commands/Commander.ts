@@ -1,13 +1,11 @@
 import { Command } from '../types/Command';
-import { moveMouseUp } from './moveMouseUp';
-import { moveMouseDown } from './moveMouseDown';
-import { moveMouseLeft } from './moveMouseLeft';
-import { moveMouseRight } from './moveMouseRight';
 import { mousePosition } from './mousePosition';
 import { drawCircle } from './drawCircle';
 import { drawRectangle } from './drawRectangle';
-import { drawSquare } from './drawSquare';
 import { printScreen } from './printScreen';
+import { commands } from '../utils/commands';
+import { moveMouse } from './moveMouse';
+import { CommandNotFoundError } from '../errors/CommandNotFoundError';
 
 class Commander {
     private readonly commands: Command[];
@@ -16,8 +14,12 @@ class Commander {
         this.commands = commands;
     }
 
-    public getCommand(commandName: string): Command | undefined {
+    public getCommand(commandName: string): Command {
         const command = this.commands.find((c) => c.name === commandName);
+
+        if (command === undefined) {
+            throw new CommandNotFoundError(commandName);
+        }
 
         return command;
     }
@@ -25,55 +27,53 @@ class Commander {
     public setCommandArgs(commandName: string, args: string[]): void {
         const command = this.getCommand(commandName);
 
-        if (command !== undefined) {
-            command.args = args;
-        }
+        command.args = args;
     }
 }
 
 const commander = new Commander([
     {
-        name: 'mouse_up',
+        name: commands.mouseUp,
         args: [],
-        handler: moveMouseUp,
+        handler: moveMouse,
     },
     {
-        name: 'mouse_down',
+        name: commands.mouseDown,
         args: [],
-        handler: moveMouseDown,
+        handler: moveMouse,
     },
     {
-        name: 'mouse_left',
+        name: commands.mouseLeft,
         args: [],
-        handler: moveMouseLeft,
+        handler: moveMouse,
     },
     {
-        name: 'mouse_right',
+        name: commands.mouseRight,
         args: [],
-        handler: moveMouseRight,
+        handler: moveMouse,
     },
     {
-        name: 'mouse_position',
+        name: commands.mousePosition,
         args: [],
         handler: mousePosition,
     },
     {
-        name: 'draw_circle',
+        name: commands.drawCircle,
         args: [],
         handler: drawCircle,
     },
     {
-        name: 'draw_rectangle',
+        name: commands.drawRectangle,
         args: [],
         handler: drawRectangle,
     },
     {
-        name: 'draw_square',
+        name: commands.drawSquare,
         args: [],
-        handler: drawSquare,
+        handler: drawRectangle,
     },
     {
-        name: 'prnt_scrn',
+        name: commands.printScreen,
         args: [],
         handler: printScreen,
     },
