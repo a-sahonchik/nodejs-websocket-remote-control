@@ -1,7 +1,7 @@
 import { createWebSocketStream, WebSocket, WebSocketServer } from 'ws';
 import { getCommandFromInput } from '../utils/commandParser';
 
-const listenWebSocketServer = (port: number) => {
+const listenWebSocketServer = (port: number): WebSocketServer => {
     const server = new WebSocketServer({ port });
 
     server.on('connection', async (webSocket: WebSocket) => {
@@ -27,6 +27,8 @@ const listenWebSocketServer = (port: number) => {
             }
         });
     });
+
+    return server;
 };
 
 export { listenWebSocketServer };

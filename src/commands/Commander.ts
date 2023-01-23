@@ -6,6 +6,7 @@ import { printScreen } from './printScreen';
 import { commandNames } from '../utils/commandNames';
 import { moveMouse } from './moveMouse';
 import { CommandNotFoundError } from '../errors/CommandNotFoundError';
+import { drawSquare } from './drawSquare';
 
 class Commander {
     private readonly commands: Command[];
@@ -70,7 +71,7 @@ const commander = new Commander([
     {
         name: commandNames.drawSquare,
         args: [],
-        handler: drawRectangle,
+        handler: drawSquare,
     },
     {
         name: commandNames.printScreen,
